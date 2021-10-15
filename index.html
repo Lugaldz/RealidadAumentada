@@ -7,13 +7,12 @@
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs>
     <a-assets>
-    <a-asset-item id="tree-obj" src="./among us.obj"></a-asset-item>
-    <a-asset-item id="tree-mtl" src="./among us.mtl"></a-asset-item>
+    <a-asset-item id="tree" src="cadillac.dae"></a-asset-item>
   </a-assets>
 
   
     <a-marker-camera preset='hiro'>
-      <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl"></a-entity>
+      <a-entity collada-model="#tree" scale =".5 .5 .5"></a-entity>
     </a-marker-camera>
   </a-scene>
 </body>
