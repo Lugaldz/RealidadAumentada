@@ -11,7 +11,9 @@
     <a-asset-item id="tree-mtl" src="./among us.mtl"></a-asset-item>
   </a-assets>
 
-  <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl"></a-entity>
-    <a-marker-camera preset='hiro'></a-marker-camera>
+  
+    <a-marker-camera preset='hiro'>
+      <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl"></a-entity>
+    </a-marker-camera>
   </a-scene>
 </body>
