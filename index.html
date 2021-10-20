@@ -1,40 +1,106 @@
-<!--Ejemplo realidad aumentada-->
 <html>
 
 <head>
-  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://libs.zappar.com/zappar-aframe/0.3.6/zappar-aframe.js"></script>
+  <script>
+    var contador = 0;
+    function sphereEventListener() {
+      avion.addEventListener('animationcomplete', function () {
 
-  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
-  <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
-  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
- 
+        if (contador == 1) {
+          avion.setAttribute('animation__1', 'property: position; from: 1 3 -10; to: 1 5 -4;  dur: 2000; easing: linear; loop: false; startEvents: animationcomplete__4');
+        }
+
+        contador++;
+
+        console.log(contador);
+        console.log(avion);
+      });
+    };
+  </script>
+
+
 </head>
 
-<body>
+<body onload="sphereEventListener()">
   <a-scene>
+
+    <a-entity position="0 3 5">
+      <a-camera></a-camera>
+    </a-entity>
 
     <a-assets>
       <a-asset-item id="tree1" src="amongus.obj"></a-asset-item>
-      <a-asset-item id="tree2" src="amongus.mtl"></a-asset-item>
-      <a-asset-item id="tree3" src="AlienAnimal.dae"></a-asset-item>
-
+      <a-asset-item id="tree4" src="Alien.glb"></a-asset-item>
+      <a-asset-item id="tree-obj"
+        src="https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2Ff.obj?v=1634328912934"></a-asset-item>
+      <a-asset-item id="tree-mtl"
+        src="https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2Ff.mtl?v=1634328939242"></a-asset-item>
     </a-assets>
+        <a-entity camera zappar-camera></a-entity>
 
-    <a-marker-camera preset="hiro">
-    <a-entity animation="property: rotation; to: 0 360 0; loop: true; dur: 1000" position="0 0 0">
-      <a-obj-model src="#tree1" material="
+      <a-entity zappar-instant="placement-mode: true;" id="my-instant-tracker">
+
+
+      <!--Luna-->
+    <a-sphere position="-5 6 0"
+      material="src:https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2F2k_moon.jpg?v=1634330264349"
+      rotation="0 0 0" scale="1.2 1.2 1.2"
+      animation="property: rotation; dur: 8000; from: 0 0 0; to: 0 360 0; dir: normal; easing: linear; loop: true;">
+    </a-sphere>
+
+    <!--Among us-->
+    <a-entity animation__1="property: rotation; to: 0 360 0; 
+                      loop: true;easing:linear; 
+                      dur: 6000;" >
+
+
+
+      <a-obj-model src="#tree1" rotation="0 180 0" material="
         src: Plastic_4K_Diffuse.jpg;
-        normalMap: Plastic_4K_Normal.jpg;" scale="0.01 0.01 0.01" position="3 0 0">
+        normalMap: Plastic_4K_Normal.jpg;" position="3 0 0"
+        animation="property:scale; from:0.01 0.01 0.01;to:0.02 0.02 0.02;dur:3000;dir:alternate;loop:true">
 
       </a-obj-model>
+
+      
+    <a-entity gltf-model="#tree4" 
+    scale="2.5 2.5 2.5 " position="3 0 -2" rotation="0 180 0"
+    animation="property:scale; to: 1 1 1;dur:3000;dir:alternate ;loop:true;"></a-entity>
+
     </a-entity>
 
+    <!--Avion-->
+    <a-entity id="avion" obj-model="obj: #tree-obj;"
+      material="src: https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2Fmat.png?v=1634329512878"
+      position="0 1 -4" scale="0.5 0.5 0.5"
+      animation__1="property: position; from: 1 3 -10; to: 1 5 -4;  dur: 2000; easing: linear; loop: false;"
+      animation__2="property: position; from: 1 5 -4; to: 3 5 -4;  dur: 2000; easing: linear; loop: false; startEvents: animationcomplete__1"
+      animation__3="property: position; from: 3 5 -4; to: 3 3 -10;  dur: 2000; easing: linear; loop: false; startEvents: animationcomplete__2"
+      animation__4="property: position; from: 3 3 -10; to: 1 3 -10;  dur: 2000; easing: linear; loop: false; startEvents: animationcomplete__3"
+      animation__5="property: rotation; dur: 4000; from: 0 0 0; to: 0 360 0; dir: normal; easing: linear; loop: true; pauseEvents:animationbegin; resumeEvents:animationcomplete__1,animationcomplete__3; ">
+
+    </a-entity>
+
+    <!--Humanoide-->
 
 
-    <a-entity collada-model="#tree3" scale="0.07 0.07 0.07" position="0 0 0"></a-entity>
-  </a-marker-camera>
+    </a-entity>
+
+    
   </a-scene>
+  
+    <script>
+      let myInstantTracker = document.getElementById("my-instant-tracker");
+      document.body.addEventListener("click", () => {
+        myInstantTracker.setAttribute(
+          "zappar-instant",
+          "placement-mode: false;"
+        );
+      });
 
+    </script>
 
 
 </body>
