@@ -1,3 +1,4 @@
+<!--Ejemplo realidad aumentada-->
 <html>
 
 <head>
@@ -50,23 +51,23 @@
       animation="property: rotation; dur: 8000; from: 0 0 0; to: 0 360 0; dir: normal; easing: linear; loop: true;">
     </a-sphere>
 
-    <!--Among us-->
+    <!--Rotacion-->
     <a-entity animation__1="property: rotation; to: 0 360 0; 
                       loop: true;easing:linear; 
                       dur: 6000;" >
 
 
-
+<!--Among us-->
       <a-obj-model src="#tree1" rotation="0 180 0" material="
         src: Plastic_4K_Diffuse.jpg;
-        normalMap: Plastic_4K_Normal.jpg;" position="3 0 0"
+        normalMap: Plastic_4K_Normal.jpg;" position="3 0 -2"
         animation="property:scale; from:0.01 0.01 0.01;to:0.02 0.02 0.02;dur:3000;dir:alternate;loop:true">
 
       </a-obj-model>
 
-      
+      <!--Humanoide-->
     <a-entity gltf-model="#tree4" 
-    scale="2.5 2.5 2.5 " position="3 0 -2" rotation="0 180 0"
+    scale="2.5 2.5 2.5 " position="3 0 1" rotation="0 180 0"
     animation="property:scale; to: 1 1 1;dur:3000;dir:alternate ;loop:true;"></a-entity>
 
     </a-entity>
@@ -83,7 +84,7 @@
 
     </a-entity>
 
-    <!--Humanoide-->
+    
 
 
     </a-entity>
