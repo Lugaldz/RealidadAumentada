@@ -6,7 +6,7 @@
   <script src="https://libs.zappar.com/zappar-aframe/0.3.6/zappar-aframe.js"></script>
   <script>
     var contador = 0;
-    function sphereEventListener() {
+    function avionEventListener() {
       avion.addEventListener('animationcomplete', function () {
 
         if (contador == 1) {
@@ -24,7 +24,7 @@
 
 </head>
 
-<body onload="sphereEventListener()">
+<body onload="avionEventListener()">
   <a-scene>
 
     <a-entity position="0 0 5">
@@ -32,12 +32,11 @@
     </a-entity>
 
     <a-assets>
-      <a-asset-item id="tree1" src="amongus.obj"></a-asset-item>
-      <a-asset-item id="tree4" src="Alien.glb"></a-asset-item>
-      <a-asset-item id="tree-obj"
+      <a-asset-item id="amongus" src="amongus.obj"></a-asset-item>
+      <a-asset-item id="alien" src="Alien.glb"></a-asset-item>
+      <a-asset-item id="avion"
         src="https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2Ff.obj?v=1634328912934"></a-asset-item>
-      <a-asset-item id="tree-mtl"
-        src="https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2Ff.mtl?v=1634328939242"></a-asset-item>
+   
     </a-assets>
         <a-entity camera zappar-camera></a-entity>
 
@@ -58,22 +57,22 @@
 
 
 <!--Among us-->
-      <a-obj-model src="#tree1" rotation="0 180 0" material="
+      <a-obj-model src="#amongus" rotation="0 180 0" material="
         src: Plastic_4K_Diffuse.jpg;
         normalMap: Plastic_4K_Normal.jpg;" position="3 0 -2"
         animation="property:scale; from:0.01 0.01 0.01;to:0.02 0.02 0.02;dur:3000;dir:alternate;loop:true">
 
       </a-obj-model>
 
-      <!--Humanoide-->
-    <a-entity gltf-model="#tree4" 
+      <!--Alien Humanoide-->
+    <a-entity gltf-model="#alien" 
     scale="2.5 2.5 2.5 " position="3 0 1" rotation="0 180 0"
     animation="property:scale; to: 1 1 1;dur:3000;dir:alternate ;loop:true;"></a-entity>
 
     </a-entity>
 
     <!--Avion-->
-    <a-entity id="avion" obj-model="obj: #tree-obj;"
+    <a-entity id="avion" obj-model="obj: #avion;"
       material="src: https://cdn.glitch.me/92208df1-b107-4d02-986a-dcaabd7eaf1d%2Fmat.png?v=1634329512878"
       position="0 1 -4" scale="0.5 0.5 0.5"
       animation__1="property: position; from: 1 3 -10; to: 1 5 -4;  dur: 2000; easing: linear; loop: false;"
